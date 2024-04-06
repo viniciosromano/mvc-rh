@@ -6,26 +6,10 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "departamentos")
-public class Departamento implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+public class Departamento extends AbstractEntity {
+
     @Column(nullable = false,length = 60,unique = true)
     private String nome;
-
-    public Departamento(long id, String nome) {
-        this.id = id;
-        this.nome = nome;
-
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;

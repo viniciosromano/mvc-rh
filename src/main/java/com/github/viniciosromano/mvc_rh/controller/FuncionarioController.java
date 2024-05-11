@@ -36,13 +36,7 @@ public class FuncionarioController {
 
     @GetMapping("update/{id}")
     public String update(@PathVariable Long id,Model model){
-        Optional<Funcionario> funcionarioOptional = funcionarioRepository.findById(id);
-        Funcionario funcionario = null;
-        if (funcionarioOptional.isPresent()){
-            funcionario = funcionarioOptional.get();
-        }else {
-            funcionario = new Funcionario();
-        }
+        Funcionario funcionario = funcionarioRepository.findById(id).orElse(new Funcionario());
         model.addAttribute("funcionario",funcionario);
         return "funcionario/form";
     }

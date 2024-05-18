@@ -22,17 +22,12 @@ public class CargoController {
 		model.addAttribute("cargos", cargos);
 		return "cargo/list";
 	}
-	
-//	@GetMapping("form")
-//	public String form() {
-//		return "cargo/form";
-//	}
 
 	@PostMapping("save")
 	public String save(@ModelAttribute Cargo cargo) {
 		cargoRepository.save(cargo);
 
-		return "redirect:/cargo";
+		return "redirect:/cargos";
 	}
 	@GetMapping("add")
 	public String create(Model model){

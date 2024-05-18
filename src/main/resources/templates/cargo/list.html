@@ -23,15 +23,15 @@
                 <tr>
                     <th>Id</th>
                     <th>Cargo</th>
-<!--                    <th>Departamento</th>-->
+                    <th>Departamento</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="cargo: ${cargos}">
                     <td th:text="${cargo.id}"></td>
                     <td th:text="${cargo.nome}"></td>
-                    <td></td>
-                    <td></td>
+                    <td th:text="${cargo.departamento.nome}"></td>
                     <td>
                         <a class="btn-sm btn-primary" th:href="@{/cargos/update/{id}(id=${cargo.id})}">Editar</a>
                         <a class="btn-sm btn-danger " th:href="@{/cargos/delete/{id}(id=${cargo.id})}">Excluir</a>

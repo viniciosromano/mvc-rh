@@ -6,4 +6,4 @@ INSERT INTO funcionarios (id,nome_funcionario,data_entrada) values (nextval('fun
 
 INSERT INTO departamentos (id,nome) values (nextval('departamentos_seq'),'TI');
 
-INSERT INTO cargos (id,nome) values (nextval('cargos_seq'),'Analista');
+INSERT INTO cargos (id,nome,id_departamento_fk) values (nextval('cargos_seq'),'Analista',1);

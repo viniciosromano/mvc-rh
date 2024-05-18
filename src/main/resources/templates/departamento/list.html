@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,32 +16,26 @@
     <div class="container">
         <h3>Listagem de Departamentos</h3>
 
-        <a class="btn-sm btn-primary" href="departamentos/add"><i class="fas fa-plus"></i></a>
+        <a class="btn-sm btn-primary" href="departamentos/add"><i class="fas fa-plus mb-3"></i></a>
 
         <table class="table table-hover table-sm">
             <thead>
-            <tr>
-                <th>Id</th>
-                <th>Departamento</th>
-            </tr>
+                <tr>
+                    <th>Id</th>
+                    <th>Departamento</th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Recursos Humanos</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Financeiro</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Vendas</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Faturamento</td>
-            </tr>
+                <tr th:each="departamento: ${departamentos}">
+                    <td th:text="${departamento.id}"></td>
+                    <td th:text="${departamento.nome}"></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a class="btn-sm btn-primary" th:href="@{/departamentos/update/{id}(id=${departamento.id})}">Editar</a>
+                        <a class="btn-sm btn-danger " th:href="@{/departamentos/delete/{id}(id=${departamento.id})}">Excluir</a>
+                    </td>
+                </tr>
             </tbody>
 
 

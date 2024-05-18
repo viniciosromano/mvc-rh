@@ -17,7 +17,7 @@
     <div class="container">
         <h3>Listagem de Funcionarios</h3>
 
-        <a class="btn-sm btn-primary" href="funcionarios/add"><i class="fas fa-plus"></i></a>
+        <a class="btn-sm btn-primary" href="funcionarios/add"><i class="fas fa-plus mb-3"></i></a>
 
         <table class="table table-hover table-sm">
             <thead>
@@ -29,16 +29,6 @@
             </tr>
             </thead>
             <tbody>
-<!--            <tr>-->
-<!--                <td>0</td>-->
-<!--                <td>Pelé</td>-->
-<!--                <td>R$ 50.000,00</td>-->
-<!--                <td>São Paulo/SP</td>-->
-<!--                <td>-->
-<!--                    <a class="btn-sm btn-primary" href="/funcionarios/update">Editar</a>-->
-<!--                    <a class="btn-sm btn-primary" href="/funcionarios/delete">Excluir</a>-->
-<!--                </td>-->
-<!--            </tr>-->
             <tr th:each="funcionario: ${funcionarios}">
                 <td th:text="${funcionario.id}"></td>
                 <td th:text="${funcionario.nome}"></td>

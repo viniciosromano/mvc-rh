@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,32 +16,28 @@
     <div class="container">
         <h1>Listagem de Cargos</h1>
 
-        <a class="btn-sm btn-primary" href="cargos/add"><i class="fas fa-plus"></i></a>
+        <a class="btn-sm btn-primary" href="cargos/add"><i class="fas fa-plus mb-3"></i></a>
 
         <table class="table table-hover table-sm">
             <thead>
-            <tr>
-                <th>Id</th>
-                <th>Cargo</th>
-                <th>Departamento</th>
-            </tr>
+                <tr>
+                    <th>Id</th>
+                    <th>Cargo</th>
+<!--                    <th>Departamento</th>-->
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Devenvolvedor</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Scrum Master</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Gerente</td>
-            </tr>
+                <tr th:each="cargo: ${cargos}">
+                    <td th:text="${cargo.id}"></td>
+                    <td th:text="${cargo.nome}"></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a class="btn-sm btn-primary" th:href="@{/cargos/update/{id}(id=${cargo.id})}">Editar</a>
+                        <a class="btn-sm btn-danger " th:href="@{/cargos/delete/{id}(id=${cargo.id})}">Excluir</a>
+                    </td>
+                </tr>
             </tbody>
-
-
         </table>
 
     </div>

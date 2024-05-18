@@ -30,12 +30,14 @@
             <input class="form-control" id="nome" th:field="*{nome}" type="text">
         </div>
 
-        <label for="id_departamento">Departamentos</label>
-        <select class="form-control" id="id_departamento">
-<!--            <option th:value="${cargo.departamento.id}" th:text="${cargo.departamento.nome}">RH</option>-->
-            <option value="11">Financeiro</option>
-            <option value="12">Vendas</option>
-        </select>
+<!--        <label for="id_departamento">Departamentos</label>-->
+<!--        <select class="form-control" id="id_departamento">-->
+<!--            <option th:each="departamento : ${departamentos}}"-->
+<!--                    th:values="#{departamento.values}"-->
+<!--                    th:text="#{departamento.text}"></option>-->
+<!--&lt;!&ndash;            <option value="11">Financeiro</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="12">Vendas</option>&ndash;&gt;-->
+<!--        </select>-->
         <button type="submit" class="btn btn-primary btn-sm">Confirmar</button>
         <a th:href="@{/departamentos}" class="btn btn-sm">Cancelar</a>
     </form>

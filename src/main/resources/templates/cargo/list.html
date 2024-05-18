@@ -31,7 +31,7 @@
                 <tr th:each="cargo: ${cargos}">
                     <td th:text="${cargo.id}"></td>
                     <td th:text="${cargo.nome}"></td>
-                    <td th:text="${cargo.departamento.nome}"></td>
+                    <td th:text="${cargo.departamento.nome !=null ? cargo.departamento.nome : null }"></td>
                     <td>
                         <a class="btn-sm btn-primary" th:href="@{/cargos/update/{id}(id=${cargo.id})}">Editar</a>
                         <a class="btn-sm btn-danger " th:href="@{/cargos/delete/{id}(id=${cargo.id})}">Excluir</a>

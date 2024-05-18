@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,6 +22,16 @@ public class CargoController {
 		List<Cargo> cargos = cargoRepository.findAll();
 		model.addAttribute("cargos", cargos);
 		return "cargo/list";
+	}
+	@GetMapping("form")
+	public String form(Model model){
+		List<ListOfValues> lovs = new ArrayList<>();
+		lovs.add(new ListOfValues(1L,"Test"));
+		lovs.add(new ListOfValues(2L,"Test"));
+		lovs.add(new ListOfValues(3L,"Test"));
+
+		model.addAttribute("departamentos",lovs);
+		return "cargo/form";
 	}
 
 	@PostMapping("save")

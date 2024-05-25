@@ -4,6 +4,7 @@ import com.github.viniciosromano.mvc_rh.model.Cargo;
 import com.github.viniciosromano.mvc_rh.model.Departamento;
 import com.github.viniciosromano.mvc_rh.repository.CargoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class CargoController {
 
 	@GetMapping()
 	public String list(Model model) {
-		List<Cargo> cargos = cargoRepository.findAll();
+		List<Cargo> cargos = cargoRepository.findAll(Sort.by(Sort.Direction.ASC,"nome"));
 		model.addAttribute("cargos", cargos);
 		return "cargo/list";
 	}

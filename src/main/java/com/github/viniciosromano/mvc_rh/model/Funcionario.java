@@ -14,7 +14,7 @@ public class Funcionario extends AbstractEntity<Long> {
 	private String nome;
 
 	@Column(nullable = true, columnDefinition = "DATE")
-	private LocalDateTime dataEntrada;
+	private LocalDate dataEntrada;
 
 	@Column(columnDefinition = "DATE")
 	private LocalDate dataSaida;
@@ -39,6 +39,43 @@ public class Funcionario extends AbstractEntity<Long> {
 		this.nome = nome;
 	}
 
+	public LocalDate getDataEntrada() {
+		return dataEntrada;
+	}
 
+	public void setDataEntrada(LocalDate dataEntrada) {
+		this.dataEntrada = dataEntrada;
+	}
 
+	public LocalDate getDataSaida() {
+		return dataSaida;
+	}
+
+	public void setDataSaida(LocalDate dataSaida) {
+		this.dataSaida = dataSaida;
+	}
+
+	public BigDecimal getSalario() {
+		return salario;
+	}
+
+	public void setSalario(BigDecimal salario) {
+		this.salario = salario;
+	}
+
+	public Cargo getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(Cargo cargo) {
+		this.cargo = cargo;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 }

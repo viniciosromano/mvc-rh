@@ -3,6 +3,7 @@ package com.github.viniciosromano.mvc_rh.controller;
 import com.github.viniciosromano.mvc_rh.model.Funcionario;
 import com.github.viniciosromano.mvc_rh.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class FuncionarioController {
 
     @GetMapping()
     public String list(Model model) {
-        List<Funcionario> funcionarios = funcionarioRepository.findAll();
+        List<Funcionario> funcionarios = funcionarioRepository.findAll(Sort.by(Sort.Direction.ASC,"nome"));
         model.addAttribute("funcionarios", funcionarios);
         return "funcionario/list";
     }

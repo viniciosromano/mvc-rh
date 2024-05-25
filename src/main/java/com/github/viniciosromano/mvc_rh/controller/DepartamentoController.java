@@ -1,10 +1,12 @@
 package com.github.viniciosromano.mvc_rh.controller;
 
+import com.github.viniciosromano.mvc_rh.controller.dto.FormDepartamento;
 import com.github.viniciosromano.mvc_rh.model.Departamento;
 import com.github.viniciosromano.mvc_rh.model.Funcionario;
 import com.github.viniciosromano.mvc_rh.repository.DepartamentoRepository;
 import com.github.viniciosromano.mvc_rh.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +21,7 @@ public class DepartamentoController {
 
 	@GetMapping()
 	public String list(Model model) {
-		List<Departamento> departamentos = departamentoRepository.findAll();
+		List<Departamento> departamentos = departamentoRepository.findAll(Sort.by(Sort.Direction.ASC,"nome") );
 		model.addAttribute("departamentos", departamentos);
 		return "departamento/list";
 	}
@@ -28,21 +30,20 @@ public class DepartamentoController {
 	public String cargosByDepartamento() {
 		return "departamento/list_cargos";
 	}
-	@PostMapping("save")
-	public String save(@ModelAttribute Departamento departamento) {
-		departamentoRepository.save(departamento);
-
-		return "redirect:/departamentos";
-	}
 	@GetMapping("add")
 	public String create(Model model){
-		model.addAttribute("departamento",new Departamento());
+		model.addAttribute("departamento",new FormDepartamento());
 		return "departamento/form";
+	}
+	@PostMapping("save")
+	public String save(@ModelAttribute FormDepartamento formDepartamento) {
+		departamentoRepository.save(formDepartamento.toModel());
+		return "redirect:/departamentos";
 	}
 
 	@GetMapping("update/{id}")
 	public String update(@PathVariable Long id, Model model) {
-		Departamento departamento = departamentoRepository.findById(id).orElse(new Departamento());
+		Departamento departamento = departamentoRepository.findById(id).orElse(new FormDepartamento().toModel());
 		model.addAttribute("departamento", departamento);
 		return "departamento/form";
 	}
